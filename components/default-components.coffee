@@ -230,8 +230,9 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             <div class="form-group">
                 <label for="{{formName+index}}" class="col-sm-4 control-label">{{label}}</label>
                 <div class="col-sm-8">
-                    <select ng-options="value for value in options" id="{{formName+index}}" class="form-control"
-                        ng-model="inputText" ng-init="inputText = options[0]"/>
+                    <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" ng-init="inputText = ''">
+                        <option value="">Choisissez une valeur</option>
+                    </select>
                     <p class='help-block'>{{description}}</p>
                 </div>
             </div>
