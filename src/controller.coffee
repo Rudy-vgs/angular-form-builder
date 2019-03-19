@@ -80,7 +80,7 @@ angular.module 'builder.controller', ['builder.provider']
 # ----------------------------------------
 # fbComponentsController
 # ----------------------------------------
-.controller 'fbComponentsController', ['$scope', '$injector', ($scope, $injector) ->
+.controller 'fbComponentsController', ['$scope', '$injector', '$timeout', ($scope, $injector, $timeout) ->
     # providers
     $builder = $injector.get '$builder'
 
@@ -91,6 +91,7 @@ angular.module 'builder.controller', ['builder.provider']
         $scope.components = []
         for name, component of $builder.components when component.group is group
             $scope.components.push component
+        $timeout(setNanoScroller)
 
     $scope.groups = $builder.groups
     $scope.activeGroup = $scope.groups[0]

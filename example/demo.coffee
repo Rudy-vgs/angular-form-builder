@@ -75,7 +75,6 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
     # builder
     # ----------------------------------------
     textbox = $builder.addFormObject 'default',
-        id: 'textbox'
         component: 'textInput'
         label: 'Name'
         description: 'Your name'
@@ -83,7 +82,6 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
         required: yes
         editable: no
     checkbox = $builder.addFormObject 'default',
-        id: 'checkbox'
         component: 'checkbox'
         label: 'Pets'
         description: 'Do you have any pets?'

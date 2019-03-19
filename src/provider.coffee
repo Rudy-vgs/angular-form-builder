@@ -32,6 +32,8 @@ angular.module 'builder.provider', []
     #   form mode: `fb-form` this is the form for end-user to input value.
     @forms =
         default: []
+    @formsId =
+        default: 0
 
 
     # ----------------------------------------
@@ -63,8 +65,15 @@ angular.module 'builder.provider', []
     @convertFormObject = (name, formObject={}) ->
         component = @components[formObject.component]
         throw "The component #{formObject.component} was not registered." if not component?
+        if formObject.id
+            exist = no
+            for form in @forms[name] when formObject.id <= form.id # less and equal
+                formObject.id = @formsId[name]++
+                exist = yes
+                break
+            @formsId[name] = formObject.id + 1 if not exist
         result =
-            id: formObject.id
+            id: formObject.id ? @formsId[name]++
             component: formObject.component
             editable: formObject.editable ? component.editable
             index: formObject.index ? 0
@@ -150,7 +159,7 @@ angular.module 'builder.provider', []
         @param name: The form name.
         @param index: The form object index.
         @param form: The form object.
-            id: The form object id.
+            id: {int} The form object id. It will be generate by $builder if not asigned.
             component: {string} The component name
             editable: {bool} Is the form object editable? (default is yes)
             label: {string} The form object label.
@@ -163,6 +172,7 @@ angular.module 'builder.provider', []
         @return: The form object.
         ###
         @forms[name] ?= []
+        @formsId[name] ?= 0
         if index > @forms[name].length then index = @forms[name].length
         else if index < 0 then index = 0
         @forms[name].splice index, 0, @convertFormObject(name, formObject)

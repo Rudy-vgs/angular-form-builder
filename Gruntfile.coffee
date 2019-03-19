@@ -50,7 +50,9 @@ module.exports = (grunt) ->
                     base: '.'
 
         karma:
-            test:
+            min:
+                configFile: 'test/karma-min.config.coffee'
+            source:
                 configFile: 'test/karma.config.coffee'
 
     # -----------------------------------
@@ -67,6 +69,7 @@ module.exports = (grunt) ->
         'coffee'
         'uglify'
     ]
+    grunt.registerTask 'test', ['karma']
 
     # -----------------------------------
     # Plugins

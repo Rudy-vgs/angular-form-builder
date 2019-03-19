@@ -1,4 +1,4 @@
-# angular-form-builder [![Build Status](https://secure.travis-ci.org/kelp404/angular-form-builder.png?branch=master)](http://travis-ci.org/kelp404/angular-form-builder) [![devDependency Status](https://david-dm.org/kelp404/angular-form-builder/dev-status.png?branch=master)](https://david-dm.org/kelp404/angular-form-builder#info=devDependencies&view=table)
+#angular-form-builder [![Build Status](https://secure.travis-ci.org/kelp404/angular-form-builder.png?branch=master)](http://travis-ci.org/kelp404/angular-form-builder) [![devDependency Status](https://david-dm.org/kelp404/angular-form-builder/dev-status.png?branch=master)](https://david-dm.org/kelp404/angular-form-builder#info=devDependencies&view=table)
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
@@ -8,16 +8,16 @@ This is an AngularJS form builder written in [CoffeeScript](http://coffeescript.
 
 
 
-## Frameworks
-1. [AngularJS](http://angularjs.org/) 1.2.32
-2. [jQuery](http://jquery.com/) 3.3.1
+##Frameworks
+1. [AngularJS](http://angularjs.org/) 1.2.18
+2. [jQuery](http://jquery.com/) 2.1.0
 3. [Bootstrap 3](http://getbootstrap.com/)
 4. [angular-validator](https://github.com/kelp404/angular-validator)
 
 
 
 
-## $builder
+##$builder
 ```coffee
 # just $builder
 angular.module 'yourApp', ['builder']
@@ -27,7 +27,8 @@ angular.module 'yourApp', ['builder', 'builder.components']
 ```
 
 
-#### components
+####components
+>
 ```coffee
 ###
 All components.
@@ -37,7 +38,8 @@ $builder.components =
 ```
 
 
-#### groups
+####groups
+>
 ```coffee
 ###
 All groups of components.
@@ -46,7 +48,8 @@ $builder.groups = [componentGroup{string}]
 ```
 
 
-#### registerComponent
+####registerComponent
+>
 ```coffee
 # .config
 $builderProvider.registerComponent = (name, component={}) ->
@@ -73,7 +76,7 @@ $builderProvider.registerComponent = (name, component={}) ->
 $builder.registerComponent = (name, component={}) ->
 ```
 
-**component.template**
+>component.template
 ```html
 <div class="form-group">
     <label for="{{name+index}}" class="col-md-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
@@ -84,7 +87,7 @@ $builder.registerComponent = (name, component={}) ->
 </div>
 ```
 
-**component.popoverTemplate**
+>component.popoverTemplate
 ```html
 <form>
     <div class="form-group">
@@ -118,7 +121,8 @@ $builder.registerComponent = (name, component={}) ->
 ```
 
 
-#### forms
+####forms
+>
 ```coffee
 ###
 builder mode: `fb-builder` you could drag and drop to build the form.
@@ -130,7 +134,8 @@ $builder.forms =
 ```
 
 
-#### insertFormObject
+####insertFormObject
+>
 ```coffee
 $builder.insertFormObject = (name, index, formObject={}) =>
     ###
@@ -138,7 +143,7 @@ $builder.insertFormObject = (name, index, formObject={}) =>
     @param name: The form name.
     @param index: The form object index.
     @param form: The form object.
-        id: The form object id.
+        id: {int} The form object id. It will be generate by $builder if not asigned.
         component: {string} The component name
         editable: {bool} Is the form object editable? (default is yes)
         label: {string} The form object label.
@@ -152,7 +157,8 @@ $builder.insertFormObject = (name, index, formObject={}) =>
     ###
 ```
 
-#### addFormObject
+####addFormObject
+>
 ```coffee
 $builder.addFormObject = (name, formObject={}) =>
     ###
@@ -161,7 +167,8 @@ $builder.addFormObject = (name, formObject={}) =>
     ###
 ```
 
-#### removeFormObject
+####removeFormObject
+>
 ```coffee
 $builder.removeFormObject = (name, index) =>
     ###
@@ -174,8 +181,9 @@ $builder.removeFormObject = (name, index) =>
 
 
 
-## builder.directive
-#### fb-components
+##builder.directive
+####fb-components
+>
 ```coffee
 a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validator']
 fbComponents = ->
@@ -199,12 +207,14 @@ fbComponents = ->
 a.directive 'fbComponents', fbComponents
 ```
 
+>
 ```html
 <div fb-components></div>
 ```
 
 
-#### fb-builder
+####fb-builder
+>
 ```coffee
 a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validator']
 fbBuilder = ($injector) ->
@@ -224,12 +234,14 @@ fbBuilder.$inject = ['$injector']
 a.directive 'fbBuilder', fbBuilder
 ```
 
+>
 ```html
 <div fb-builder="default"></div>
 ```
 
 
-#### fb-form
+####fb-form
+>
 ```coffee
 a = angular.module 'builder.directive', ['builder.provider', 'builder.controller', 'builder.drag', 'validator']
 fbForm = ($injector) ->
@@ -252,6 +264,7 @@ fbForm.$inject = ['$injector']
 a.directive 'fbForm', fbForm
 ```
 
+>
 ```html
 <form class="form-horizontal">
     <div ng-model="input" fb-form="default" fb-default="defaultValue"></div>
@@ -266,7 +279,7 @@ a.directive 'fbForm', fbForm
 
 
 
-## builder.components
+##builder.components
 > There are some default components at this module. This module is not required.
 + textInput
 + textArea
@@ -277,15 +290,16 @@ a.directive 'fbForm', fbForm
 
 
 
-## Unit Test
+##Unit Test
+>
 ```bash
-$ npm test
+$ grunt test
 ```
 
 
 
 
-## Development
+##Development
 ```bash
 # install node modules
 $ npm install
