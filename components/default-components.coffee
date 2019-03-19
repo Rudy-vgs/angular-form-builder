@@ -54,6 +54,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                 label: 'Select'
                 description: 'description'
                 placeholder: 'placeholder'
+                value: 'Choose a value'
                 options:
                     first: 'value one'
                     second: 'value two'   
@@ -101,6 +102,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                 label: 'Liste déroulante'
                 description: 'description'
                 placeholder: 'texte de remplacement'
+                value: 'Choisissez une valeur'
                 options:
                     first: 'première valeur'
                     second: 'deuxième valeur'
@@ -356,7 +358,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                 <label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
                 <div class="col-sm-8">
                     <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" ng-init="inputText = ''" validator-required="{{required}}">
-                        <option value="">Choisissez une valeur</option>
+                        <option value="">#{$translate.instant('select.value')}</option>
                     </select>
                     <p class='help-block'>{{description}}</p>
                 </div>
