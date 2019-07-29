@@ -357,7 +357,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
             <div class="form-group">
                 <label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
                 <div class="col-sm-8">
-                    <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" ng-init="inputText = options[0]" validator-required="{{required}}">
+                    <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" validator-required="{{required}}">
                         
                     </select>
                     <p class='help-block'>{{description}}</p>
