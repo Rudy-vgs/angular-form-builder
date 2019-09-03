@@ -358,8 +358,8 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                 <label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
                 <div class="col-sm-8">
                     <select id="{{formName+index}}" class="form-control" ng-model="inputText" validator-required="{{required}}">
-                        <option value="''">#{$translate.instant('select.value')}</option>
-                        <option ng-repeat="value for value in options" value="{{value}}">{{value}}</option>
+                        <option ng-selected="{{inputText == ''}}" value="''">#{$translate.instant('select.value')}</option>
+                        <option ng-selected="{{value == inputText}}" ng-repeat="value in options" value="{{value}}">{{value}}</option>
                     </select>
                     <p class='help-block'>{{description}}</p>
                 </div>
