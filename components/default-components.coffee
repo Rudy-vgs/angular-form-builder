@@ -357,7 +357,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
             <div class="form-group">
                 <label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
                 <div class="col-sm-8">
-                    <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" validator-required="{{required}}">
+                    <select id="{{formName+index}}" class="form-control" ng-model="inputText" validator-required="{{required}}">
                         <option ng-selected="{{inputText == ''}}" value="''">#{$translate.instant('select.value')}</option>
                         <option ng-selected="{{value == inputText}}" ng-repeat="value in options" value="{{value}}">{{value}}</option>
                     </select>
@@ -373,7 +373,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Descri#{$translate.instant('popover.description')}ption</label>
+                    <label class='control-label'>#{$translate.instant('popover.description')}</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
