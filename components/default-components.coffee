@@ -358,7 +358,7 @@ angular.module 'builder.components', ['builder', 'validator.rules', 'pascalprech
                 <label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
                 <div class="col-sm-8">
                     <select ng-options="value for value in options" id="{{formName+index}}" class="form-control" ng-model="inputText" ng-init="inputText = ''" validator-required="{{required}}">
-                        <option value="">Choisissez une valeur</option>
+                        <option value="">#{$translate.instant('select.value')}</option>
                     </select>
                     <p class='help-block'>{{description}}</p>
                 </div>
