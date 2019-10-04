@@ -1022,7 +1022,7 @@
       return result;
     };
     this.convertFormObject = function(name, formObject) {
-      var component, result, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+      var component, exist, form, result, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
       if (formObject == null) {
         formObject = {};
       }
@@ -1030,18 +1030,35 @@
       if (component == null) {
         throw "The component " + formObject.component + " was not registered.";
       }
+      console.log(formObject);
+      if (formObject.id) {
+        exist = false;
+        _ref = this.forms[name];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          form = _ref[_i];
+          if (!(formObject.id <= form.id)) {
+            continue;
+          }
+          exist = true;
+          break;
+        }
+        if (!exist) {
+          this.formsId[name] = formObject.id + 1;
+        }
+      }
       result = {
-        id: (_ref = formObject.id) != null ? _ref : this.formsId[name]++,
+        id: (_ref1 = formObject.id) != null ? _ref1 : this.formsId[name]++,
         component: formObject.component,
-        editable: (_ref1 = formObject.editable) != null ? _ref1 : component.editable,
-        index: (_ref2 = formObject.index) != null ? _ref2 : 0,
-        label: (_ref3 = formObject.label) != null ? _ref3 : component.label,
-        description: (_ref4 = formObject.description) != null ? _ref4 : component.description,
-        placeholder: (_ref5 = formObject.placeholder) != null ? _ref5 : component.placeholder,
-        options: (_ref6 = formObject.options) != null ? _ref6 : component.options,
-        required: (_ref7 = formObject.required) != null ? _ref7 : component.required,
-        validation: (_ref8 = formObject.validation) != null ? _ref8 : component.validation
+        editable: (_ref2 = formObject.editable) != null ? _ref2 : component.editable,
+        index: (_ref3 = formObject.index) != null ? _ref3 : 0,
+        label: (_ref4 = formObject.label) != null ? _ref4 : component.label,
+        description: (_ref5 = formObject.description) != null ? _ref5 : component.description,
+        placeholder: (_ref6 = formObject.placeholder) != null ? _ref6 : component.placeholder,
+        options: (_ref7 = formObject.options) != null ? _ref7 : component.options,
+        required: (_ref8 = formObject.required) != null ? _ref8 : component.required,
+        validation: (_ref9 = formObject.validation) != null ? _ref9 : component.validation
       };
+      console.log(result);
       return result;
     };
     this.reindexFormObject = (function(_this) {
