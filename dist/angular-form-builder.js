@@ -1030,7 +1030,6 @@
       if (component == null) {
         throw "The component " + formObject.component + " was not registered.";
       }
-      console.log(formObject);
       if (formObject.id) {
         exist = false;
         _ref = this.forms[name];
@@ -1058,7 +1057,6 @@
         required: (_ref8 = formObject.required) != null ? _ref8 : component.required,
         validation: (_ref9 = formObject.validation) != null ? _ref9 : component.validation
       };
-      console.log(result);
       return result;
     };
     this.reindexFormObject = (function(_this) {
